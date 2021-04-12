@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Style="{x:StaticResource AppPage}"
+             xmlns:ECB="clr-namespace:Rishabh_Assignment.Behaviour"
+             xmlns:Controls="clr-namespace:Rishabh_Assignment.CustomControls"
+             xmlns:converters="clr-namespace:Rishabh_Assignment.Converters"
+             x:Class="Rishabh_Assignment.Views.HomeView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <ListView ItemsSource="{Binding Users}" HasUnevenRows="True" ItemTapped="ListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Margin="0,3">
+                            <Grid ColumnDefinitions="100,*">
+                                <Image Source="{Binding avatar}"/>
+                                <StackLayout>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding first_name}"/>
+                                                <Span Text=" "/>
+                                                <Span Text="{Binding last_name}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Text="{Binding email}"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <ECB:EventToCommandBehavior EventName="ItemSelected"
+                                              Command="{Binding OutputAgeCommand}" 
+                                              Converter="{StaticResource SelectedItemConverter}" />
+            </ListView.Behaviors>
+        </ListView>
+
+      <Controls:BusyView Message="please Wait ..." IsVisible="{Binding IsBusy}"/>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:Controls="clr-namespace:Rishabh_Assignment.CustomControls"
+             x:Class="Rishabh_Assignment.Views.Profile">
+    <Grid >
+       
+        <Grid>
+            <Image Source="Pro" Aspect="AspectFill" Opacity="0.5"/>
+            <StackLayout Padding="100">
+                <Frame CornerRadius="50" Padding="0" IsClippedToBounds="True" HeightRequest="50" WidthRequest="50" >
+                    <Image Source="{Binding Avatar}"/>
+                </Frame>
+
+            </StackLayout>
+            <StackLayout  VerticalOptions="Center" Padding="20 ">
+                <Frame>
+                    <StackLayout>
+                        <Label Text="{Binding Name }" FontSize="Large"/>
+                        <Label >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                        <Span Text="{Binding Email}" TextDecorations="Underline" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Text="{Binding SupportUrl}" VerticalOptions="EndAndExpand"/>
+                        <Label Text="{Binding SupportText}"/>
+                    </StackLayout>
+                </Frame>
+                                    
+            </StackLayout>
+            <StackLayout VerticalOptions="End" Padding="0,0,0,16">
+                <Button Command="{Binding SubmitCommand}" Text="LogOut" TextColor="White" CornerRadius="200"  BackgroundColor="{x:DynamicResource SecondaryColor}"
+FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" />
+
+            </StackLayout>
+        </Grid>
+                       
+
+        <Controls:BusyView Message="please Wait ..." IsVisible="{Binding IsBusy}"/>
+
+       
+        
+     
+    </Grid>
+</ContentPage>

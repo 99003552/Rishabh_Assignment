@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:Controls="clr-namespace:Rishabh_Assignment.CustomControls" 
+             xmlns:behavior="clr-namespace:Rishabh_Assignment.Behaviour"
+             x:Class="Rishabh_Assignment.Views.Register">
+    <ScrollView>
+        <Grid Padding="16">
+           
+            <Frame  BorderColor="{x:DynamicResource PrimaryColor}">
+
+                <StackLayout Spacing="16">
+                    <Image Source="Logo" VerticalOptions="Start" Margin="0,20,0,0" HorizontalOptions="Center" HeightRequest="80" WidthRequest="80"/>
+                    <Frame>
+                        <Button Text="Already a User? Login" Command="{Binding GoBack}"/>
+                    </Frame>
+                    <Frame BorderColor="{x:DynamicResource SecondaryColor}" CornerRadius="20">
+                        <Controls:BorderlessEntry Placeholder="First Name" Text="{Binding First}"    
+                           PlaceholderColor="Gray" HeightRequest="40"   
+                           Keyboard="Plain"
+                           TextColor=" #003f72">
+                        </Controls:BorderlessEntry>
+                    </Frame>
+                    <Frame BorderColor="{x:DynamicResource SecondaryColor}" CornerRadius="20">
+
+                        <Controls:BorderlessEntry Placeholder="Last Name" Text="{Binding Last}"    
+                           PlaceholderColor="Gray" HeightRequest="40"   
+                           Keyboard="Plain"
+                           TextColor=" #003f72">
+                           
+                        </Controls:BorderlessEntry>
+                    </Frame>
+                    <Frame  BorderColor="{x:DynamicResource SecondaryColor}" CornerRadius="20">
+                        <Controls:BorderlessEntry Placeholder="Email" Text="{Binding Email}"    
+                           PlaceholderColor="Gray" HeightRequest="40"   
+                           Keyboard="Email"
+                           TextColor=" #003f72">
+                            <Controls:BorderlessEntry.Behaviors>
+                                <behavior:EmailValidation/>
+                            </Controls:BorderlessEntry.Behaviors>
+                        </Controls:BorderlessEntry>
+                    </Frame>
+                    
+                    
+                    <Frame BorderColor="{x:DynamicResource SecondaryColor}" CornerRadius="20">
+                        <Controls:BorderlessEntry Placeholder="Password" Text="{Binding Password}"    
+                           PlaceholderColor="Gray" HeightRequest="40"   
+                           Keyboard="Plain"
+                           TextColor=" #003f72">
+                            <Controls:BorderlessEntry.Behaviors>
+                                <!--<behavior:PasswordValidation/>-->
+                            </Controls:BorderlessEntry.Behaviors>
+                        </Controls:BorderlessEntry>
+                    </Frame>
+                    <Frame BorderColor="{x:DynamicResource SecondaryColor}" CornerRadius="20">
+
+                        <Controls:BorderlessEntry Placeholder="Confirm Password" Text="{Binding Confirm}"    
+                           PlaceholderColor="Gray" HeightRequest="40"   
+                           Keyboard="Plain"
+                           TextColor=" #003f72">
+                            <Controls:BorderlessEntry.Behaviors>
+                                <!--<behavior:PasswordValidation/>-->
+                            </Controls:BorderlessEntry.Behaviors>
+                        </Controls:BorderlessEntry>
+                    </Frame>
+                    
+                    <Frame  BorderColor="{x:DynamicResource SecondaryColor}" CornerRadius="20">
+                        <Controls:BorderlessEntry Placeholder="Phone" Text="{Binding Phone}"    
+                           PlaceholderColor="Gray" HeightRequest="40"   
+                           Keyboard="Email"
+                           TextColor=" #003f72">
+                            <Controls:BorderlessEntry.Behaviors>
+                                <!--<behavior:PhoneValidation/>-->
+                            </Controls:BorderlessEntry.Behaviors>
+                        </Controls:BorderlessEntry>
+                    </Frame>
+                    
+                    <Button Text="SignUp" VerticalOptions="End" TextColor="White" CornerRadius="200" BackgroundColor="{x:DynamicResource SecondaryColor}"
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </Frame>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
